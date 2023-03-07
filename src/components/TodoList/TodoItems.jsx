@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggle } from "../../redux/TodoSlice";
+import { toggle, deleteTodo } from "../../redux/TodoSlice";
 
 const TodoItems = () => {
   const { items } = useSelector((state) => state.todo);
@@ -23,6 +23,7 @@ const TodoItems = () => {
             >
               {text}
             </label>
+            <button className="bg-red-600" onClick={() => dispatch(deleteTodo(id))} >delete</button>
           </div>
         );
       })}
