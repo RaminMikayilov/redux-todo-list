@@ -1,15 +1,28 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { toggle } from "../../redux/TodoSlice";
 
 const TodoItems = () => {
   const { items } = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
 
   return (
     <div>
       {items.map(({ id, text, completed }) => {
         return (
-          <div>
-            <div key={id}>{text}</div>
+          <div key={id}>
+            <input
+              type="checkbox"
+              id={id}
+              checked={completed}
+              onChange={() => dispatch(toggle(id))}
+            />
+            <label
+              htmlFor={id}
+              className={`${completed ? "line-through" : ""}`}
+            >
+              {text}
+            </label>
           </div>
         );
       })}
