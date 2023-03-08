@@ -1,10 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 
 const initialState = {
   items: [
     { id: 1, text: "Learn HTML", completed: false },
     { id: 2, text: "Learn CSS", completed: true },
   ],
+  isOpenModal: false,
+  currentTodo: {
+    id: 456798,
+    text: "",
+  },
 };
 
 const TodoSlice = createSlice({
@@ -28,10 +34,37 @@ const TodoSlice = createSlice({
       const todos = state.items.filter((item) => !item.completed);
       state.items = todos;
     },
+    //modal
+    openModal: (state) => {
+      state.isOpenModal = true;
+    },
+    closeModal: (state) => {
+      state.isOpenModal = false;
+    },
+    //edit todo
+    findTodo: (state, action) => {
+      const id = action.payload;
+      const todo = state.items.find((item) => item.id == id);
+      state.currentTodo.id = todo.id;
+      state.currentTodo.text = todo.text;
+    },
+    editTodo: (state, action) => {
+      const { id, text } = action.payload;
+      const todo = state.items.find((item) => item.id == id);
+      todo.text = text;
+    },
   },
 });
 
-export const { addTodo, toggle, deleteTodo, clearCompleted } =
-  TodoSlice.actions;
+export const {
+  addTodo,
+  toggle,
+  deleteTodo,
+  clearCompleted,
+  openModal,
+  closeModal,
+  findTodo,
+  editTodo,
+} = TodoSlice.actions;
 
 export default TodoSlice.reducer;

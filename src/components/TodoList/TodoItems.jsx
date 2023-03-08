@@ -1,6 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggle, deleteTodo, clearCompleted } from "../../redux/TodoSlice";
+import {
+  toggle,
+  deleteTodo,
+  clearCompleted,
+  openModal,
+  findTodo,
+} from "../../redux/slices/TodoSlice";
 
 const TodoItems = () => {
   const { items } = useSelector((state) => state.todo);
@@ -29,12 +35,23 @@ const TodoItems = () => {
                   {text}
                 </label>
               </div>
-              <button
-                className="bg-red-600"
-                onClick={() => dispatch(deleteTodo(id))}
-              >
-                delete
-              </button>
+              <div className="space-x-3">
+                <button
+                  className="bg-green-600"
+                  onClick={() => {
+                    dispatch(openModal());
+                    dispatch(findTodo(id));
+                  }}
+                >
+                  edit
+                </button>
+                <button
+                  className="bg-red-600"
+                  onClick={() => dispatch(deleteTodo(id))}
+                >
+                  delete
+                </button>
+              </div>
             </div>
           );
         })}
