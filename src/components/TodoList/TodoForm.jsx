@@ -16,19 +16,23 @@ const TodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="border-2"
-        value={todo}
-        onChange={(e) => {
-          setTodo(e.target.value);
-        }}
-      />
-      <button type="submit" className="bg-blue-400">
-        Add
-      </button>
-    </form>
+    <>
+      <h1 className=" text-custom-blue text-4xl font-black italic uppercase drop-shadow-2xl">Todo list</h1>
+      <form onSubmit={handleSubmit} className="py-5 flex space-x-2">
+        <input
+          type="text"
+          className="border-b-4 border-custom-blue rounded-lg px-3 py-2 outline-blue-500 w-full"
+          placeholder="Add a new todo"
+          value={todo}
+          onChange={(e) => {
+            setTodo(e.target.value);
+          }}
+        />
+        <button type="submit" className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-800 hover:border-blue-600 rounded duration-200">
+          Add
+        </button>
+      </form>
+    </>
   );
 };
 
