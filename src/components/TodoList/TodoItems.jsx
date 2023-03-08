@@ -12,13 +12,28 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const TodoItems = () => {
-  const { items } = useSelector((state) => state.todo);
+  const { items, filterMode } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
+  // FILTER
+  // default All
+  let filtered = items;
+
+  if (filterMode == "Active") {
+    filtered = items.filter((item) => !item.completed);
+  } else if (filterMode == "Completed") {
+    filtered = items.filter((item) => item.completed);
+  }
+
+  if (items.length == 0) {
+    return (
+      <div className="text-red-600 font-bold text-xl">List is empty...</div>
+    );
+  }
   return (
     <>
       <div className="space-y-2">
-        {items.map(({ id, text, completed }) => {
+        {filtered.map(({ id, text, completed }) => {
           return (
             <div key={id} className="flex items-center justify-between">
               <div className="space-x-2 flex items-center">

@@ -11,6 +11,7 @@ const initialState = {
     id: 456798,
     text: "",
   },
+  filterMode: "All",
 };
 
 const TodoSlice = createSlice({
@@ -53,6 +54,10 @@ const TodoSlice = createSlice({
       const todo = state.items.find((item) => item.id == id);
       todo.text = text;
     },
+    // filter
+    filter: (state, action) => {
+      state.filterMode = action.payload;
+    },
   },
 });
 
@@ -65,6 +70,7 @@ export const {
   closeModal,
   findTodo,
   editTodo,
+  filter,
 } = TodoSlice.actions;
 
 export default TodoSlice.reducer;
