@@ -8,6 +8,9 @@ import {
   findTodo,
 } from "../../redux/slices/TodoSlice";
 
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
 const TodoItems = () => {
   const { items } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
@@ -35,22 +38,23 @@ const TodoItems = () => {
                   {text}
                 </label>
               </div>
-              <div className="space-x-3">
-                <button
-                  className="bg-green-600"
+              <div className="space-x-3 flex">
+                <span
+                  className="text-custom-blue cursor-pointer"
                   onClick={() => {
                     dispatch(openModal());
                     dispatch(findTodo(id));
                   }}
                 >
-                  edit
-                </button>
-                <button
-                  className="bg-red-600"
+                  <FaEdit />
+                </span>
+
+                <span
+                  className="text-red-600 cursor-pointer"
                   onClick={() => dispatch(deleteTodo(id))}
                 >
-                  delete
-                </button>
+                  <MdDelete />
+                </span>
               </div>
             </div>
           );
