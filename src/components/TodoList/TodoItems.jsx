@@ -48,7 +48,7 @@ const TodoItems = () => {
                   htmlFor={id}
                   className={`${
                     completed ? "line-through font-medium" : "font-bold"
-                  } text-custom-blue`}
+                  } text-custom-blue dark:text-custom-white`}
                 >
                   {text}
                 </label>

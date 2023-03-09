@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
   theme: {
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],
@@ -17,6 +18,7 @@ module.exports = {
       },
       colors: {
         "custom-blue": "#8B3BEB",
+        "custom-white": "#67E8F9",
       },
     },
   },

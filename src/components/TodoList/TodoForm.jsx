@@ -17,11 +17,11 @@ const TodoForm = () => {
 
   return (
     <>
-      <h1 className=" text-custom-blue text-4xl font-black italic uppercase drop-shadow-2xl">Todo list</h1>
+      <h1 className=" text-custom-blue text-4xl font-black italic uppercase drop-shadow-2xl dark:text-custom-white">Todo list</h1>
       <form onSubmit={handleSubmit} className="py-5 flex space-x-2">
         <input
           type="text"
-          className="border-b-4 border-custom-blue rounded-lg px-3 py-2 outline-blue-500 w-full"
+          className="border-b-4 border-custom-blue rounded-lg px-3 py-2 outline-blue-500 w-full dark:text-custom-white dark:bg-slate-700 dark:border-custom-white"
           placeholder="Add a new todo"
           value={todo}
           onChange={(e) => {
