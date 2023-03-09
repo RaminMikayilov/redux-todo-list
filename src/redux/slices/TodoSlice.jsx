@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useEffect } from "react";
+
+const localStorageTodos = JSON.parse(localStorage.getItem("items"));
+
+const setItems = (item) => {
+  localStorage.setItem("items", JSON.stringify(item));
+};
 
 const initialState = {
-  items: [
-    { id: 1, text: "Learn HTML", completed: false },
-    { id: 2, text: "Learn CSS", completed: true },
-  ],
+  items: localStorageTodos !== null ? localStorageTodos : [],
   isOpenModal: false,
   currentTodo: {
     id: 456798,
@@ -19,21 +21,26 @@ const TodoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.items.push(action.payload);
+      const newTodo = action.payload;
+      state.items.push(newTodo);
+      setItems(state.items);
     },
     toggle: (state, action) => {
       const id = action.payload;
       const todo = state.items.find((item) => item.id == id);
       todo.completed = !todo.completed;
+      setItems(state.items);
     },
     deleteTodo: (state, action) => {
       const id = action.payload;
       const todos = state.items.filter((item) => item.id != id);
       state.items = todos;
+      setItems(state.items);
     },
     clearCompleted: (state) => {
       const todos = state.items.filter((item) => !item.completed);
       state.items = todos;
+      setItems(state.items);
     },
     //modal
     openModal: (state) => {
@@ -53,6 +60,7 @@ const TodoSlice = createSlice({
       const { id, text } = action.payload;
       const todo = state.items.find((item) => item.id == id);
       todo.text = text;
+      setItems(state.items);
     },
     // filter
     filter: (state, action) => {
