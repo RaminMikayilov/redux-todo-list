@@ -4,6 +4,7 @@ import { closeModal, editTodo } from "../../redux/slices/TodoSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();
+
   const { id, text } = useSelector((state) => state.todo.currentTodo);
 
   const [todo, setTodo] = useState(text);
@@ -15,8 +16,10 @@ const Modal = () => {
   };
 
   return (
-    <div className="w-full h-screen flex bg-blue-600/50 fixed top-0 left-0 items-center justify-center z-10">
-      <div className="bg-cyan-200 justify-center w-1/3 mx-auto rounded-br-3xl rounded-tl-3xl shadow-2xl p-5">
+    //modal container
+    <div className="flex items-center justify-center bg-blue-700/60 fixed z-50 inset-0">
+      {/* modal */}
+      <div className="bg-cyan-200 w-5/6 sm:w-2/3 md:w-1/2 lg:w-1/3 rounded-br-3xl rounded-tl-3xl shadow-2xl p-5">
         <h1 className=" text-custom-blue text-4xl font-black italic drop-shadow-2xl text-center">
           Edit todo
         </h1>
