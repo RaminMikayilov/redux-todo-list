@@ -26,9 +26,13 @@ const TodoItems = () => {
   }
 
   if (items.length == 0) {
-    return (
-      <div className="text-red-600 font-bold text-xl">List is empty...</div>
-    );
+    return <div className="text-red-600 font-bold text-xl">List is empty...</div>
+  } 
+  else if (filtered.length == 0 && filterMode == "Active") {
+    return <div className="text-red-600 font-bold text-xl">No active todo</div>
+  } 
+  else if (filtered.length == 0 && filterMode == "Completed") {
+    return <div className="text-red-600 font-bold text-xl">No completed todo</div>
   }
   return (
     <>
