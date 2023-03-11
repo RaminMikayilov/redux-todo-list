@@ -75,13 +75,16 @@ const TodoItems = () => {
           );
         })}
       </div>
-      <button
-        type="submit"
-        className="mt-10 float-right bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-800 hover:border-red-600 rounded duration-200"
-        onClick={() => dispatch(clearCompleted())}
-      >
-        Clear Completed
-      </button>
+      {/* hide clear completed button in active mode */}
+      {filterMode !== "Active" && (
+        <button
+          type="submit"
+          className="mt-10 float-right bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-800 hover:border-red-600 rounded duration-200"
+          onClick={() => dispatch(clearCompleted())}
+        >
+          Clear Completed
+        </button>
+      )}
     </>
   );
 };
