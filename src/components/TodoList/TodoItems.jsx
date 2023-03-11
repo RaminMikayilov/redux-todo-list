@@ -36,7 +36,7 @@ const TodoItems = () => {
         {filtered.map(({ id, text, completed }) => {
           return (
             <div key={id} className="flex items-center justify-between">
-              <div className="space-x-2 flex items-center">
+              <div className="space-x-2 flex items-center w-4/5">
                 <input
                   type="checkbox"
                   id={id}
@@ -48,12 +48,12 @@ const TodoItems = () => {
                   htmlFor={id}
                   className={`${
                     completed ? "line-through font-medium" : "font-bold"
-                  } text-custom-blue dark:text-custom-white`}
+                  } text-custom-blue dark:text-custom-white w-4/5 overflow-hidden`}
                 >
                   {text}
                 </label>
               </div>
-              <div className="space-x-3 flex">
+              <div className="space-x-3 flex max-w-1/6">
                 <span
                   className="text-custom-blue cursor-pointer"
                   onClick={() => {
