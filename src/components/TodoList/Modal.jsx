@@ -11,6 +11,8 @@ const Modal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (todo.trim() == "") return;
     dispatch(editTodo({ id: id, text: todo }));
     dispatch(closeModal());
   };
