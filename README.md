@@ -2,6 +2,8 @@
 
 This is a simple Todo List app that allows you to keep track of your daily tasks. You can add, delete, edit and mark tasks as completed.
 
+![screenshot](./src/assets/images/screenshot.png)
+
 ## Features
 
 - Add new tasks to the list
